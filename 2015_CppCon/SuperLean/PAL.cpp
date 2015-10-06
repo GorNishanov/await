@@ -178,7 +178,7 @@ std::error_code OsTcpSocket::Connect(endpoint const& ep, os_async_context* o)
 {
 	DWORD unused;
 	auto ok = (*startSockets.ConnectExPtr)(
-		handle_, (const sockaddr*)ep.addr(), ep.size(),
+		handle_, (const sockaddr*)ep.addr(), (int)ep.size(),
 		nullptr, 0,
 		&unused,
 		(OVERLAPPED*)o
@@ -199,7 +199,7 @@ std::error_code OsTcpSocket::Send(void* buf, size_t len, os_async_context* o)
 {
 	WSABUF b;
 	b.buf = (char*)buf;
-	b.len = len;
+	b.len = (int)len;
 
 	DWORD nBytes;
 
@@ -231,7 +231,7 @@ std::error_code OsTcpSocket::Receive(void* buf, size_t len, os_async_context* o)
 {
 	WSABUF b;
 	b.buf = (char*)buf;
-	b.len = len;
+	b.len = (int)len;
 
 	DWORD nBytes;
 	DWORD flags = 0;
