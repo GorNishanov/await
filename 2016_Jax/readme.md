@@ -1,6 +1,6 @@
 # Coroutines on Linux demo
 
-We forked clang 3.8.0 to experiment with various way of representing coroutines in llvm IR and testing different approaches of integrating coroutine optimization and implementation passes in the optimizer pipeline. We are on the fourth iteration and based on the discussion in Jax 2016 meeting we will need a few more iterations on it more before staring cleaning up the code and bringing to llvmdev for formal review.
+We forked clang 3.8.0 to experiment with various way of representing coroutines in llvm IR and to test different approaches of integrating coroutine optimization and implementation passes in the optimizer pipeline. We are on the fourth iteration and based on the discussion in Jax 2016 meeting we will need a few more iterations on it  before staring cleaning up the code and bringing to llvmdev for formal review.
 
 Result of the experiment demonstrates heap elision and indirect call replacement for two scenarios, simple generators and asynchronous nested coroutines. clang work is an extension of Richard Smith coroutine commits in clang 3.8.0. LLVM work is based on brainstorming with Richard and David, but likely misinterpreted, hastily and sloppily hacked together by me (Gor).
 
