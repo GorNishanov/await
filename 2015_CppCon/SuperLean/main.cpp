@@ -3,8 +3,8 @@
 
 // uncomment one
 //#define WHAT_TO_RUN traditional
-//#define WHAT_TO_RUN awaitable
-#define WHAT_TO_RUN improved
+#define WHAT_TO_RUN awaitable
+//#define WHAT_TO_RUN improved
 
 int main()
 {
