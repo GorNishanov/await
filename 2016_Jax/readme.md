@@ -55,12 +55,12 @@ invoke.cont7.lr.ph:
 awaithe.cpp example shows heap elision optimization working with nested coroutines as long as the return type implements RAII semantics.
 
 ````
-extern "C" coro g() {
+coro g() {
   printf("g running\n");
   co_await suspend_never{};
 }
 
-extern "C" coro f() {
+coro f() {
   printf("f started\n");
   co_await g();
   printf("f resumed\n");
@@ -73,6 +73,8 @@ int main() {
   printf("post-resume");
 }
 ````
+
+Running this program does not result in any memory allocations for coroutine frames, since coroutine state becomes embedded in the state of its caller. Uncommenting the `Excape(x)` will result in exactly one allocation for the coroutine `f`. State for coroutine `g` will remain embedded in `f`.
 
 ## Building your own clang/llvm with coroutines
 
