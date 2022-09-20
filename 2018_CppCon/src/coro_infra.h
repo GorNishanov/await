@@ -118,7 +118,7 @@ struct root_task {
     std::experimental::suspend_always initial_suspend() { return {}; }
     void return_void();
     void unhandled_exception() noexcept { std::terminate(); }
-    std::experimental::suspend_never final_suspend() { return {}; }
+    std::experimental::suspend_never final_suspend() noexcept { return {}; }
   };
 
   // TODO: this can be done via a wrapper coroutine
