@@ -75,7 +75,7 @@ struct tcalloc {
   }
 
   void *alloc(size_t sz) {
-    if (root && root->size <= sz) {
+    if (root && root->size >= sz) {
       void *mem = root;
       root = root->next;
       return mem;
