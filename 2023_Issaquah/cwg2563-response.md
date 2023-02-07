@@ -58,7 +58,7 @@ it is initialized with expiring value of the temporary obtained in step 1.
 
 If creation of coroutine return object or a call to get_return_object fails, the exception is propagated to the caller.
 
-## Appendix
+## Appendix A: An example of how promise_type for expected might look like:
 
 ```c++
 template<typename T, typename E, typename... Args>
@@ -89,3 +89,14 @@ struct std::coroutine_traits<expected<T, E>, Args...> {
     ...
 };
 ```
+
+## Appendix B: What cppreference says?
+
+Not normative, but, that reflects how community understands the feature.
+
+https://en.cppreference.com/w/cpp/language/coroutines
+
+Note that on the cppreference coroutines page it says this:
+
+> When a coroutine reaches a suspension point: the return object obtained earlier is returned to the caller/resumer, after implicit conversion to the return type of the coroutine, if necessary.
+
